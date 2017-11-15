@@ -11,6 +11,10 @@ app.use(bodyParser.json());
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "view.html"));
 });
+//tables
+app.get("/tables", function(req, res) {
+  res.sendFile(path.join(__dirname, "tables.html"));
+});
 
 //listener
 app.listen(PORT, function() {
