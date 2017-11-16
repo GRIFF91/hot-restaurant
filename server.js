@@ -1,5 +1,7 @@
 var express = require('express')
 var bodyParser = require('body-parser')
+var path = require("path");
+
 var data = require('./app.js')
 
 var app = express()
@@ -18,7 +20,7 @@ app.get("/tables", function(req, res) {
 });
 
 app.get("/reserve", function(req, res) {
-  res.sendFile(path.join(__dirname, "reserve.html"));
+  res.sendFile(path.join(__dirname, "reservation.html"));
 });
 
 app.get("/api/reserved", function (req, res) {
@@ -33,7 +35,7 @@ app.post("/api/new", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body-parser middleware
   var newReservation = req.body;
-  newReservation.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
+  newReservation.unique = newcharacter.name.replace(/\s+/g, "").toLowerCase();
 
   res.json(newReservation);
 });
