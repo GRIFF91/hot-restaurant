@@ -1,10 +1,11 @@
 var express = require('express')
 var bodyParser = require('body-parser')
+var data = require('./app.js')
 
 var app = express()
 var PORT = process.env.PORT || 3000
 
-app.use(bodyParser.urlEncoded({extended: false}))
+app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json());
 
 //views
@@ -20,9 +21,12 @@ app.get("/reserve", function(req, res) {
   res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
-app.get("/api/seated", function (req, res) {
-  var seated = {'name': 'person'}
-  res.JSON(seated)
+app.get("/api/reserved", function (req, res) {
+  res.JSON(app.reserved)
+})
+
+app.get('/api/waitlist', function (req, res) {
+  res.JSON(app.waitList)
 })
 
 app.post("/api/new", function(req, res) {
