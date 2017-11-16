@@ -24,11 +24,11 @@ app.get("/reserve", function(req, res) {
 });
 
 app.get("/api/reserved", function (req, res) {
-  res.JSON(app.reserved)
+  res.json(app.reserved)
 })
 
 app.get('/api/waitlist', function (req, res) {
-  res.JSON(app.waitList)
+  res.json(app.waitList)
 })
 
 app.post("/api/new", function(req, res) {
