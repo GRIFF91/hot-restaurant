@@ -36,7 +36,7 @@ app.post("/api/new", function(req, res) {
   // This works because of our body-parser middleware
   var newReservation = req.body;
   console.log(newReservation)
-  newReservation.unique = newcharacter.name.replace(/\s+/g, "").toLowerCase();
+  newReservation.unique = newReservation.customerName.replace(/\s+/g, "").toLowerCase() + Date.now();
 
   if (data.reserved.length === 5) {
     data.waitList.push(newReservation)
