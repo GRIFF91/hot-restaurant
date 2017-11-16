@@ -24,20 +24,25 @@ app.get("/reserve", function(req, res) {
 });
 
 app.get("/api/reserved", function (req, res) {
-  res.JSON(app.reserved)
+  res.json(data.reserved)
 })
 
 app.get('/api/waitlist', function (req, res) {
-  res.JSON(app.waitList)
+  res.json(data.waitList)
 })
 
 app.post("/api/new", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body-parser middleware
   var newReservation = req.body;
+  console.log(newReservation)
   newReservation.unique = newcharacter.name.replace(/\s+/g, "").toLowerCase();
 
-  res.json(newReservation);
+  if (data.reserved.length === 5) {
+    data.waitList.push(newReservation)
+  } else data.reserved.push(newReservation)
+
+  res.json(newReservation)
 });
 
 //listener
