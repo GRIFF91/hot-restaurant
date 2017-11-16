@@ -25,6 +25,15 @@ app.get("/api/seated", function (req, res) {
   res.JSON(seated)
 })
 
+app.post("/api/new", function(req, res) {
+  // req.body hosts is equal to the JSON post sent from the user
+  // This works because of our body-parser middleware
+  var newReservation = req.body;
+  newReservation.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
+
+  res.json(newReservation);
+});
+
 //listener
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
