@@ -37,7 +37,11 @@ app.post("/api/new", function(req, res) {
   var newReservation = req.body;
   newReservation.unique = newcharacter.name.replace(/\s+/g, "").toLowerCase();
 
-  res.json(newReservation);
+  if (app.reserved.length === 5) {
+    app.waitList.push(newReservation)
+  } else app.reserved.push(newReservation)
+
+  res.json(newReservation)
 });
 
 //listener
