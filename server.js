@@ -14,6 +14,7 @@ app.use(bodyParser.json());
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "home.html"));
 });
+
 //tables
 app.get("/tables", function(req, res) {
   res.sendFile(path.join(__dirname, "tables.html"));
@@ -36,7 +37,7 @@ app.post("/api/new", function(req, res) {
   // This works because of our body-parser middleware
   var newReservation = req.body;
   console.log(newReservation)
-  newReservation.unique = newReservation.customerName.replace(/\s+/g, "").toLowerCase() + Date.now();
+  newReservation.unique = newReservation.Name.replace(/\s+/g, "").toLowerCase() + Date.now();
 
   if (data.reserved.length === 5) {
     data.waitList.push(newReservation)

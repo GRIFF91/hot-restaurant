@@ -104,9 +104,9 @@
 
      // Grabbing the form elements
      var newReservation = {
-       customerName: $('#reserve_name').val().trim(),
-       phoneNumber: $('#reserve_phone').val().trim(),
-       customerEmail: $('#reserve_email').val().trim(),
+       Name: $('#reserve_name').val().trim(),
+       PhoneNumber: $('#reserve_phone').val().trim(),
+       Email: $('#reserve_email').val().trim(),
        customerID: $('#reserve_uniqueID').val().trim()
      };
 
@@ -115,6 +115,7 @@
      var currentURL = window.location.origin;
 
      
+
      $.post(currentURL + '/api/new/', newReservation, function(err, data) {
        if (err) throw err
 
