@@ -80,7 +80,22 @@
   <!-- Bootstrap javascript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-  
+  <script>
+    $.get('/api/reserved', function (data) { 
+      data.forEach(function (reserve) {
+        var item = $('<div class="reservation">')
+        item.text([reserve.Name, reserve.PhoneNumber, reserve.Email].join(', '))
+        $('#tableSection').append(item)
+      })
+    })
+    $.get('/api/waitlist', function (data) { 
+      data.forEach(function (reserve) {
+        var item = $('<div class="reservation">')
+        item.text([reserve.Name, reserve.PhoneNumber, reserve.Email].join(', '))
+        $('#waitlistSection').append(item)
+      })
+    })
+  </script>
 
 
 
