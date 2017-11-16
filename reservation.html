@@ -33,8 +33,9 @@
 			<br>
 
 			<div class="text-center">
-				<a href="tables.html"><button type="button" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list-alt"></span> View Tables</button></a>
-				<a href="home.html"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>
+
+				<a href="/tables"><button type="button" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list-alt"></span> View Tables</button></a>
+				<a href="/"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>
 			</div>
 		</div>
 
@@ -113,7 +114,10 @@
 
      var currentURL = window.location.origin;
 
-     $.post(currentURL + '/api/reserved', newReservation, function(data) {
+     
+     $.post(currentURL + '/api/new/', newReservation, function(err, data) {
+       if (err) throw err
+
        //If a table is available, tell the user they are booked
        if (data === true) {
          alert("Yay! An alert that you are booked! (I'll change the alert n-a-min)");
